@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/asdasda.unity
+- path: Assets/aavikko.unity
   isLoaded: 1
   isActive: 1

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace UnityStandardAssets.Vehicles.Car
@@ -69,6 +70,14 @@ namespace UnityStandardAssets.Vehicles.Car
 
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
+
+
+                //  moreeeee...
+            count = 0;
+            SetCountText();
+            winText.text = "";
+
+
         }
 
 
@@ -363,5 +372,43 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             return false;
         }
+
+
+
+
+
+        //hmmm...
+
+        public float speed;
+        public Text countText;
+        public Text winText;
+
+        private Rigidbody rb;
+        private int count;
+
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Pick Up"))
+            {
+                other.gameObject.SetActive(false);
+                count = count + 1;
+                SetCountText();
+            }
+        }
+
+        void SetCountText()
+        {
+            countText.text = "Penguins: " + count.ToString();
+            if (count >= 7)
+            {
+                winText.text = "You have collected all the penguins. Drive to the exit.";
+            }
+        }
     }
+
+
+
 }
+
+
